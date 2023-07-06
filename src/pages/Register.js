@@ -13,12 +13,17 @@ const Register = () => {
   const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
-    console.log(e.target);
+    const name = e.target.name;
+    const value = e.target.value;
+    setValues({ ...values, [name]: value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      console.log("pls provide");
+    }
   };
 
   const toggleMembers = () => {
@@ -55,14 +60,14 @@ const Register = () => {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type="submit" className="btn btn-block">
+        <button type="submit" onClick={onSubmit} className="btn btn-block">
           submit
         </button>
         <p>
-         {values.isMember ? 'Not a member yet?' :'Already a member?'}
+          {values.isMember ? "Not a member yet?" : "Already a member?"}
           <button type="button" onClick={toggleMembers} className="member-btn">
-              {values.isMember?'Register':'Login'}
-            </button>
+            {values.isMember ? "Register" : "Login"}
+          </button>
         </p>
       </form>
     </Wrapper>
