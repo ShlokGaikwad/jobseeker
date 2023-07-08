@@ -7,7 +7,7 @@ import { addUserToLocalStorage, getUserFromLocalStorage } from "../../utils/loca
 
 const initialState = {
   isLoading: false,
-  user: getUserFromLocalStorage,
+  user: getUserFromLocalStorage(),
 };
 
 export const registerUser = createAsyncThunk(
