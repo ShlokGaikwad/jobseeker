@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Wrapper from "../assets/wrappers/SmallSidebar";
 
 const SmallSideBar = () => {
   return (
-    <h2>SmallSideBar</h2>
-  )
-}
+    <Wrapper>
+      <h2>SmallSideBar</h2>
+    </Wrapper>
+  );
+};
 
-export default SmallSideBar
+export default SmallSideBar;
