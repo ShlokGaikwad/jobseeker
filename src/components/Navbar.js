@@ -1,11 +1,11 @@
 import React from "react";
 import Wrapper from "../assets/wrappers/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { FaAlignLeft, FaUserCircle,FaCaretDown } from "react-icons/fa";
+import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import Logo from "./Logo";
 
 const Navbar = () => {
-  const user=useSelector((store)=>store.user)
+  const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   return (
     <Wrapper>
@@ -13,7 +13,7 @@ const Navbar = () => {
         <button
           type="button"
           className="toggle-btn"
-          onClick={() => console.log("toggle sidebar")}
+          onClick={() => console.log(`toggle sidebar`)}
         >
           <FaAlignLeft />
         </button>
@@ -29,7 +29,9 @@ const Navbar = () => {
               console.log("logout");
             }}
           >
-            <FaUserCircle/>{user.name}<FaCaretDown/>
+            <FaUserCircle />
+            {user.name}
+            <FaCaretDown />
           </button>
           <div className="dropdown show-dropdown">
             <button
