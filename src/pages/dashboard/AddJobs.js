@@ -1,9 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Wrapper from "./../../assets/wrappers/DashboardFormPage";
 import FormRow from "./../../components/FormRow";
 import FormRowSelect from "./../../components/FormRowSelect";
+import { clearValues, handleChange } from "../../features/job/jobSlice";
 
 const AddJobs = () => {
   const {
@@ -19,6 +20,8 @@ const AddJobs = () => {
     editJobId,
   } = useSelector((store) => store.job);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!position || !company || !jobLocation) {
@@ -30,7 +33,7 @@ const AddJobs = () => {
   const handleJobInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value);
+    dispatch(handleChange({ name, value }));
   };
 
   return (
@@ -80,7 +83,7 @@ const AddJobs = () => {
             <button
               type="button"
               className="btn btn-block clear-btn"
-              onClick={() => console.log("clear value")}
+              onClick={() => dispatch(clearValues())}
             >
               clear
             </button>
