@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
 import { logoutUser } from "../user/userSlice";
+import { getUserFromLocalStorage } from "../../utils/localStorage";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -46,7 +47,10 @@ const jobSlice = createSlice({
       state[name] = value;
     },
     clearValues: () => {
-      return initialState;
+      return {
+        ...initialState,
+        jobLocation: getUserFromLocalStorage()?.location || "",
+      };
     },
   },
   extraReducers: {
@@ -55,11 +59,11 @@ const jobSlice = createSlice({
     },
     [createJob.fulfilled]: (state) => {
       state.isLoading = false;
-      toast.success('Job Created')
+      toast.success("Job Created");
     },
-    [createJob.rejected]: (state,{payload}) => {
+    [createJob.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      toast.error(payload)
+      toast.error(payload);
     },
   },
 });
