@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
 import { logoutUser } from "../user/userSlice";
 import { getUserFromLocalStorage } from "../../utils/localStorage";
+import { showLoading, hideLoading,getAllJobs } from "../allJobs/allJobsSlice";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 

@@ -4,6 +4,7 @@ import Wrapper from "./../assets/wrappers/Job";
 import { Link } from "react-router-dom";
 import JobInfo from "./JobInfo";
 import { useDispatch } from "react-redux";
+import moment from "moment/moment";
 
 const Job = ({
   _id,
@@ -16,7 +17,7 @@ const Job = ({
 }) => {
   const dispatch = useDispatch();
 
-  const date = createdAt;
+  const date = moment(createdAt).format("MMMM Do, YYYY");
   return (
     <Wrapper>
       <header>
