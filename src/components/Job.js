@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import JobInfo from "./JobInfo";
 import { useDispatch } from "react-redux";
 import moment from "moment/moment";
-import { deleteJob } from "../features/job/jobSlice";
+import { deleteJob, setEditJob } from "../features/job/jobSlice";
 
 const Job = ({
   _id,
@@ -40,7 +40,18 @@ const Job = ({
             <Link
               to="/add-jobs"
               className="btn edit-btn"
-              onClick={() => console.log("edit job")}
+              onClick={() =>
+                dispatch(
+                  setEditJob({
+                    editJobId: _id,
+                    position,
+                    company,
+                    jobLocation,
+                    jobType,
+                    status,
+                  })
+                )
+              }
             >
               Edit
             </Link>
